@@ -3,8 +3,10 @@
 {% load wagtailcore_tags %}
 
 {% block body_class %}template-blogindexpage{% endblock %}
-
+{% load menu_tags %}
 {% block content %}
+{% main_menu max_levels=3 template="" sub_menu_template="" add_sub_menus_inline=True %}
+
     <h1>{{ page.title }}</h1>
 
     <div class="intro">{{ page.intro|richtext }}</div>

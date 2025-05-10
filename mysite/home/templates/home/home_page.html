@@ -1,11 +1,21 @@
 {% extends "base.html" %}
-
-<!-- load wagtailcore_tags by adding this: -->
-{% load wagtailcore_tags %}
-
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load menu_tags %}
 {% block body_class %}template-homepage{% endblock %}
 
-<!-- replace everything below with: -->
 {% block content %}
-    {{ page.body|richtext }}
-{% endblock %}
+{% main_menu max_levels=3 template="menus/custom_main_menu.html" sub_menu_template="menus/custom_sub_menu.html" %}
+
+    <div>
+        <h1>{{ page.title }}</h1>
+        {% image page.image fill-480x320 %}
+        <p>{{ page.hero_text }}</p>
+        {% if page.hero_cta_link %}
+            <a href="{% pageurl page.hero_cta_link %}">
+                {% firstof page.hero_cta page.hero_cta_link.title %}
+            </a>
+        {% endif %}
+    </div>
+
+  {{ page.body|richtext }}
+{% endblock content %}
