@@ -31,16 +31,18 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
+<body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
+    {% include "includes/header.html" %}
+    {% block content %}{% endblock %}
 
-        {% block content %}{% endblock %}
+    {# Add this to the file: #}
+    {% include "includes/footer.html" %}
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
 
-        {% block extra_js %}
-        {# Override this in templates to add extra javascript #}
-        {% endblock %}
-    </body>
-</html>
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
+</body></html>

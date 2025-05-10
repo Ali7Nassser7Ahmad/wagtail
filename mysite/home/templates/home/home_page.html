@@ -4,8 +4,12 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-{% main_menu max_levels=3 template="menus/custom_main_menu.html" sub_menu_template="menus/custom_sub_menu.html" %}
-
+{% main_menu max_levels=3 template="menus/custom_main_menu.html" %}
+{{ main_menu }}
+{{  menu_items }}
+    {% for x in menu_items %}
+    {{ x }}
+    {% endfor %}
     <div>
         <h1>{{ page.title }}</h1>
         {% image page.image fill-480x320 %}
